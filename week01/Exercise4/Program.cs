@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 class Program
 {
@@ -18,40 +19,31 @@ class Program
             
             numbers.Add(number);
         }
+
+        // Compute the sum
+        int sum = numbers.Sum();
+        Console.WriteLine($"The sum is: {sum}");
         
-        if (numbers.Count > 0)
+        // Compute the average
+        double average = numbers.Average();
+        Console.WriteLine($"The average is: {average}");
+        
+        // Find the maximum number
+        int maxNumber = numbers.Max();
+        Console.WriteLine($"The largest number is: {maxNumber}");
+        
+        // Stretch challenge: Find the smallest positive number
+        int? smallestPositive = numbers.Where(n => n > 0).DefaultIfEmpty(int.MaxValue).Min();
+        if (smallestPositive != int.MaxValue)
+            Console.WriteLine($"The smallest positive number is: {smallestPositive}");
+        
+        // Stretch challenge: Sort and display the list
+        numbers.Sort();
+        Console.WriteLine("The sorted list is:");
+        foreach (int num in numbers)
         {
-            int sum = 0;
-            int maxNumber = numbers[0];
-            int? minPositive = null;
-            
-            foreach (int num in numbers)
-            {
-                sum += num;
-                if (num > maxNumber)
-                    maxNumber = num;
-                if (num > 0 && (minPositive == null || num < minPositive))
-                    minPositive = num;
-            }
-            
-            double average = (double)sum / numbers.Count;
-            numbers.Sort();
-            
-            Console.WriteLine($"The sum is: {sum}");
-            Console.WriteLine($"The average is: {average}");
-            Console.WriteLine($"The largest number is: {maxNumber}");
-            if (minPositive.HasValue)
-                Console.WriteLine($"The smallest positive number is: {minPositive}");
-            
-            Console.WriteLine("The sorted list is:");
-            foreach (int num in numbers)
-            {
-                Console.WriteLine(num);
-            }
-        }
-        else
-        {
-            Console.WriteLine("No numbers were entered.");
+            Console.WriteLine(num);
         }
     }
 }
+
