@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.Json;
+using SYSTEM.Text.Json;
 
 class JournalEntry
 {
