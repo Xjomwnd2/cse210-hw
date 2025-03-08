@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-         // If-else statement example
+        // If-else statement example
         Console.Write("Enter a number: ");
         int number = Convert.ToInt32(Console.ReadLine());
         
@@ -54,7 +54,7 @@ class Program
         }
         
         Console.ReadKey();
-    }
 
         Console.WriteLine("Hello World! This is the Journal Project.");
     }
+}
