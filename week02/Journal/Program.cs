@@ -4,57 +4,74 @@ class Program
 {
     static void Main(string[] args)
     {
-        // If-else statement example
-        Console.Write("Enter a number: ");
-        int number = Convert.ToInt32(Console.ReadLine());
+        // Ask user for their grade percentage
+        Console.Write("Enter your grade percentage: ");
+        int percentage = int.Parse(Console.ReadLine());
         
-        if (number > 0)
+        // Initialize variables for letter grade and sign
+        string letter = "";
+        string sign = "";
+        
+        // Determine the letter grade
+        if (percentage >= 90)
         {
-            Console.WriteLine("The number is positive.");
+            letter = "A";
         }
-        else if (number < 0)
+        else if (percentage >= 80)
         {
-            Console.WriteLine("The number is negative.");
+            letter = "B";
+        }
+        else if (percentage >= 70)
+        {
+            letter = "C";
+        }
+        else if (percentage >= 60)
+        {
+            letter = "D";
         }
         else
         {
-            Console.WriteLine("The number is zero.");
+            letter = "F";
         }
         
-        // Switch statement example
-        Console.Write("\nEnter a day number (1-7): ");
-        int day = Convert.ToInt32(Console.ReadLine());
+        // Determine the sign (plus or minus)
+        int lastDigit = percentage % 10;
         
-        switch (day)
+        if (lastDigit >= 7)
         {
-            case 1:
-                Console.WriteLine("Monday");
-                break;
-            case 2:
-                Console.WriteLine("Tuesday");
-                break;
-            case 3:
-                Console.WriteLine("Wednesday");
-                break;
-            case 4:
-                Console.WriteLine("Thursday");
-                break;
-            case 5:
-                Console.WriteLine("Friday");
-                break;
-            case 6:
-                Console.WriteLine("Saturday");
-                break;
-            case 7:
-                Console.WriteLine("Sunday");
-                break;
-            default:
-                Console.WriteLine("Invalid day number");
-                break;
+            sign = "+";
+        }
+        else if (lastDigit < 3)
+        {
+            sign = "-";
+        }
+        else
+        {
+            sign = "";
         }
         
-        Console.ReadKey();
-
-        Console.WriteLine("Hello World! This is the Journal Project.");
+        // Handle exceptional cases
+        if (letter == "A" && sign == "+")
+        {
+            sign = ""; // There is no A+ grade
+        }
+        
+        if (letter == "F")
+        {
+            sign = ""; // There is no F+ or F- grade
+        }
+        
+        // Print the final grade
+        Console.WriteLine($"Your grade is: {letter}{sign}");
+        
+        // Check if the student passed the course
+        if (percentage >= 70)
+        {
+            Console.WriteLine("Congratulations! You passed the course.");
+        }
+        else
+        {
+            Console.WriteLine("You didn't pass this time. Keep working hard for next time!");
+        }
     }
 }
