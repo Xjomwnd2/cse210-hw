@@ -1,19 +1,33 @@
 ﻿using System;
-
-class Program
+class Exercise1
 {
     static void Main()
     {
-        // Prompt the user for their first name
-        Console.Write("What is your first name? ");
-        string firstName = Console.ReadLine();
-
-        // Prompt the user for their last name
-        Console.Write("What is your last name? ");
-        string lastName = Console.ReadLine();
-
-        // Display the formatted output
-        Console.WriteLine($"\nYour name is {lastName}, {firstName} {lastName}.");
+        // Declare variables
+        string name;
+        int age;
+        double height;
+        
+        // Get user input
+        Console.Write("Enter your name: ");
+        name = Console.ReadLine();
+        
+        Console.Write("Enter your age: ");
+        age = Convert.ToInt32(Console.ReadLine());
+        
+        Console.Write("Enter your height in meters: ");
+        height = Convert.ToDouble(Console.ReadLine());
+        
+        // Display output
+        Console.WriteLine("\nHello, " + name + "!");
+        Console.WriteLine("You are " + age + " years old.");
+        Console.WriteLine("You are " + height + " meters tall.");
+        
+        // Using string interpolation (more modern approach)
+        Console.WriteLine($"\nHello, {name}!");
+        Console.WriteLine($"You are {age} years old.");
+        Console.WriteLine($"You are {height} meters tall.");
+        
+        Console.ReadKey();
     }
 }
-
